@@ -10,7 +10,7 @@ Rails.application.routes.draw do
           
   # READ
   get("/bookmarks", { :controller => "bookmarks", :action => "index" })
-  
+    
   get("/bookmarks/:path_id", { :controller => "bookmarks", :action => "show" })
   
   # UPDATE

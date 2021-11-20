@@ -1,40 +1,38 @@
 <div>
   <div>
     <h1>
-      List of all bookmarks
+      <%=@current_user.first_name+" "+@current_user.last_name %>'s bookmarks
     </h1>
   </div>
 </div>
 
+<form action = "/insert_bookmark" method = "post">
+
+    
+    <select name = "query_movie_id">
+      <%Movie.all.order(:title).each do |a_movie|%>
+      <option value = "<%=a_movie.id%>"> 
+        <%=a_movie.title%>
+      </option>
+    <%end%>
+    </select>
+  <button>
+    Bookmark this movie!
+  </button>
+</form>
 <hr>
 
-<div>
-  <div>
-    <h2>
-      Add a new bookmark
-    </h2>
+<table border="1">
+  <tbody>
+    <tr>
+      <th>Movie</th>	
+      <th>Created at</th>
+      <th></th>
+    </tr>
+    <tr>
+    </tr>
+</table>
 
-    <form action="/insert_bookmark" method="post">
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <div>
-        <label for="movie_id_box">
-          Movie
-        </label>
-
-        <input type="text" id="movie_id_box" name="query_movie_id">
-      </div>
-
-      <button>
-        Create bookmark
-      </button>
-    </form>
   </div>
 </div>
 

@@ -2,14 +2,19 @@ class BookmarksController < ApplicationController
 
   
   def index
-    matching_bookmarks = Bookmark.all
+         
+    matching_bookmarks = @current_user.bookmarks
+    
+    user_id = session.fetch(:user_id)
+    @user = User.all.where(:id=>user_id).at(0)
 
-    @list_of_bookmarks = matching_bookmarks.order({ :created_at => :desc })
+    @list_of_bookmarks = matching_bookmarks.order({:created_at => :desc })
 
     render({ :template => "bookmarks/index.html.erb" })
   end
 
   def show
+    @current_user = User.where({:id => session[:user_id]}).at(0)
     the_id = params.fetch("path_id")
 
     matching_bookmarks = Bookmark.where({ :id => the_id })
