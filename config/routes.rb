@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  get("/index", {:controller => "application", :action => "index"})
+  get("/", {:controller => "application", :action => "index"})
 
+  get("/add_bookmark", {:controller => "bookmarks", :action=> "create"})
   # Routes for the Bookmark resource:
 
   # CREATE

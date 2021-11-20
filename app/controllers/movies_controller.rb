@@ -1,4 +1,13 @@
 class MoviesController < ApplicationController
+  
+  def add_user_bookmark
+    b = Bookmark.new
+    b.user_id = session.fetch(:user_id)
+    b.movie_id = params.fetch("the_movie_id")
+    b.save
+    redirect_to "/bookmarks", :notice => "Bookmarked movie"
+  end
+  
   def index
     matching_movies = Movie.all
 
@@ -25,6 +34,7 @@ class MoviesController < ApplicationController
     the_movie.director_id = params.fetch("query_director_id")
     the_movie.description = params.fetch("query_description")
     the_movie.image = params.fetch("query_image")
+  
 
     if the_movie.valid?
       the_movie.save
