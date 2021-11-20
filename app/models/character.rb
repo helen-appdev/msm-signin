@@ -10,4 +10,9 @@
 #  movie_id   :integer
 #
 class Character < ApplicationRecord
+    belongs_to :movie
+    belongs_to :actor
+    validates(:name, {:presence=>true})
+    validates(:actor, {:presence=>true})
+    validates(:movie, {:presence=>true})
 end

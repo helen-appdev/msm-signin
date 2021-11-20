@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::Base
+  
+  def index
+    render({:template => "/index.html.erb"})
+  end
+  
   before_action(:load_current_user)
   
   # Uncomment this if you want to force users to sign in before any other actions
