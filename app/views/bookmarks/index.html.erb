@@ -29,8 +29,18 @@
       <th>Created at</th>
       <th></th>
     </tr>
+    <% @list_of_bookmarks.each do |a_bookmark| %>
+  
     <tr>
+      <td>
+        <a href = "/movies/<%=a_bookmark.movie_id%>">
+          <%=a_bookmark.movie.title%></a></td>
+      <td><%=a_bookmark.created_at%></td>
+      <td>
+        <a href = "/delete_bookmark/<%=a_bookmark.id%>">Un-bookmark</a>
+      </td>
     </tr>
+    <%end%>
 </table>
 
   </div>
